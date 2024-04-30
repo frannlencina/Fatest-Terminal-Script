@@ -1,43 +1,43 @@
-# Configuración de la Terminal para Fatest-Terminal
+# Terminal Configuration for Fatest-Terminal
 
-Antes de comenzar, asegúrate de editar los datos del script para asi tener tu propia terminal personalizada. 
+Before getting started, make sure to edit the script data to have your own customized terminal.
 
-Guia de como instalar el script.
+Guide on how to install the script.
 
-## Configuración de la Terminal
+## Terminal Configuration
 
-1. **Editar los datos de la Terminal:**
-   - Abre tu editor de texto preferido, como NotePad++ o Bloc de notas.
-   - Edita los datos del archivo `Microsoft.PowerShell_profile` según sea necesario.
+1. **Edit Terminal Data:**
+   - Open your preferred text editor, such as NotePad++ or Notepad.
+   - Edit the data in the `Microsoft.PowerShell_profile` file as needed.
 
-2. **Instalación y Configuración de Windows PowerShell:**
-   - Instala Windows PowerShell si aún no lo tienes instalado en tu sistema.
-   
-3. **Comprobación de Perfil:**
-   - Abre Windows PowerShell y ejecuta el siguiente comando para verificar si tienes un perfil:
+2. **Installation and Configuration of Windows PowerShell:**
+   - Install Windows PowerShell if you haven't already installed it on your system.
+
+3. **Profile Check:**
+   - Open Windows PowerShell and run the following command to check if you have a profile:
      ```powershell
      Test-Path $Profile
      ```
 
-4. **Creación de un Nuevo Perfil (si es necesario):**
-   - Si el comando anterior no devuelve un resultado positivo, crea un nuevo perfil ejecutando:
+4. **Creating a New Profile (if necessary):**
+   - If the above command does not return a positive result, create a new profile by running:
      ```powershell
      New-Item –Path $Profile –Type File –Force
      ```
 
-5. **Habilitación de la Ejecución de Scripts:**
-   - Habilita la ejecución de scripts en Windows PowerShell con el siguiente comando:
+5. **Enabling Script Execution:**
+   - Enable script execution in Windows PowerShell with the following command:
      ```powershell
      Set-ExecutionPolicy RemoteSigned
      ```
 
-6. **Reemplazo del Archivo de Perfil:**
-   - Dirígete a la ubicación donde se encuentra el archivo `Microsoft.PowerShell_profile`. Por lo general, se encuentra en:
+6. **Replacing the Profile File:**
+   - Navigate to the location where the `Microsoft.PowerShell_profile` file is located. Typically, it is found in:
      ```
-     C:\Users\<TuUsuario>\Documentos\PowerShell
+     C:\Users\<YourUser>\Documents\PowerShell
      ```
-   - Reemplaza el archivo de la terminal con el que has editado previamente.
+   - Replace the terminal file with the one you previously edited.
 
-¡Listo! Tu terminal está ahora configurada para utilizar el script Fatest-Terminal.
+Done! Your terminal is now configured to use the Fatest-Terminal script.
 
 by @frannlencina / Francisco Lencina
