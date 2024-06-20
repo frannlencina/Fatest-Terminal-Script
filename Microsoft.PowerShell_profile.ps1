@@ -1,80 +1,56 @@
-function Show-MainMenu {
-	Write-Host ""
-	Write-Host "Frann 🧉 | Custom Terminal Script"
-	Write-Host "@frannlencina /github"
-	Write-Host ""
-	Write-Host "[FTools] to see the tools menu"
-	Write-Host "----------------------"
+# Ruta al archivo JSON
+$configFilePath = "C:\Users\cinki\OneDrive\Documentos\PowerShell\Config.json"
+
+# Verificar si el archivo existe
+if (Test-Path $configFilePath) {
+    try {
+        # Leer y convertir el contenido del archivo JSON a un objeto PowerShell
+        $config = Get-Content $configFilePath | ConvertFrom-Json
+    } catch {
+        Write-Host "Error al leer el archivo JSON: $_"
+    }
+} else {
+    Write-Host "El archivo de configuración no se encontró: $configFilePath"
 }
 
-Show-MainMenu
-
 function FTools {
-
 	function Show-Menu {
 		Write-Host "----------------------"
 		Write-Host "Choose an option to execute"
 		Write-Host ""
-		Write-Host "💡 (1) All Repos"
+		foreach ($item in $($config.directories)) {
+			Write-Host "📂 ($($item.key)) $($item.name)"
+		 }
 		Write-Host ""
-		Write-Host "📂 (2) LetrasSinFiltro Repo - (3) FraintStudio Repo - (4) Portfolio Repo"
+		foreach ($item in $($config.webLinks)) {
+			Write-Host "🌟 ($($item.key)) $($item.name)"
+		 }
 		Write-Host ""
-		Write-Host "🌟 (5) Github Profile"
-		Write-Host ""
-		Write-Host "🤖 (6) ChatGPT"
-		Write-Host ""
-		Write-Host "🗑️ (X) Nothing"
+		Write-Host "🗑️ (X) Close"
 		Write-Host "----------------------"
 	}
-	
-	$root_allRepos = "D:\Programming"
-	$root_letrasSinFiltro = "C:\Users\cinki\Desktop\LetrasSinFiltro"
-	$root_fraintStudios = "D:\Programming\Fraint Studio\fraint-studio"
-	$root_porfolio = "D:\Programming\portfolio"
-	$link_github = "https://github.com/frannlencina"
-	$link_chatgpt = "https://chat.openai.com/"
-	
-	
+
+	Show-Menu
 	do {
-		Show-Menu
-	 $option = Read-Host "👉🏻 "
-	 
-		switch ($option) {
-			1 {
-				Write-Host "✅ Succes"
-				Set-Location $root_allRepos
-				$option = "x"
-			
-			}
-			2 {
-				Write-Host "✅ Succes"
-				Set-Location $root_letrasSinFiltro
-				$option = "x"
-			
-			}
-			3 {
-				Write-Host "✅ Succes"
-				Set-Location $root_fraintStudios
-				$option = "x"
-			
-			}
-			4 {
-				Write-Host "✅ Succes"
-				Set-Location $root_porfolio
-				$option = "x"
-			
-			}
-			5 {
-				Write-Host "✅ Succes"
-				Start-Process $link_github
-			
-			}
-			6 {
-				Write-Host "✅ Succes"
-				Start-Process $link_chatgpt
+
+		# Combina los arrays $config.directories y $config.webLinks en una sola lista
+		$allItems = $($config.directories) + $($config.webLinks)
+
+		$option = Read-Host "👉🏻 "
+		
+		foreach ($item in $allItems) {
+			if ($option -contains $item.key) {
+				if ($item.type -eq 'directory') {
+					Set-Location $item.path
+					Write-Host "✅ Succes"
+					$option = "x"
+				} elseif ($item.type -eq 'webLink') {
+					Start-Process $item.path
+					Write-Host "✅ Succes"
+					$option = "x"
+				}
 			}
 		}
-	
-	} while ($option -ne "x")
+	} while ($option -ne $($config.closeButton))
 
 }

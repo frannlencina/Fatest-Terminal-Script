@@ -1,0 +1,50 @@
+{
+    "user": "asd",
+    "directories": [
+        {
+            "name": "All repos",
+            "key": "1",
+            "path": "D:/Programming",
+            "type": "directory"
+        },
+        {
+            "name": "LetrasSinFiltro Repo",
+            "key": "2",
+            "path": "C:/Users/cinki/Desktop/LetrasSinFiltro",
+            "type": "directory"
+        },
+        {
+            "name": "FraintStudio Repo",
+            "key": "3",
+            "path": "D:/Programming/Fraint Studio/fraint-studio",
+            "type": "directory"
+        },
+        {
+            "name": "Portfolio Repo",
+            "key": "4",
+            "path": "D:/Programming/portfolio",
+            "type": "directory"
+        }
+    ],
+    "webLinks": [
+        {
+            "name": "Github Profile",
+            "key": "5",
+            "path": "https://github.com/frannlencina",
+            "type": "webLink"
+        },
+        {
+            "name": "ChatGPT",
+            "key": "6",
+            "path": "https://chat.openai.com/",
+            "type": "webLink"
+        },
+        {
+            "name": "Youtube",
+            "key": "8",
+            "path": "https://youtube.com/",
+            "type": "webLink"
+        }
+    ],
+    "closeButton": "x"
+}
